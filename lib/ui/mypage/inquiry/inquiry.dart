@@ -10,6 +10,7 @@ import 'package:orot/global_asset/app_less_back.dart';
 import 'package:orot/global_asset/common.dart';
 import 'package:orot/global_asset/global_style.dart';
 import 'package:orot/global_asset/app_center_title.dart';
+import 'package:orot/ui/mypage/inquiry/inquiry_history.dart';
 import 'package:orot/ui/mypage/inquiry/inquiry_now.dart';
 
 
@@ -37,7 +38,7 @@ class InquiryPage extends GetView<InquiryController> {
             indicatorColor: GlobalStyle.orot_primary,
             tabs: [
               Tab(text: '문의하기'),
-              Tab(text: '문의내역'),
+              Tab(text: '문의 내역 확인'),
             ],
           ),
           centerTitle: true,
@@ -53,7 +54,7 @@ class InquiryPage extends GetView<InquiryController> {
             physics: NeverScrollableScrollPhysics(),
             children: [
               InquiryNowPage(),
-              Text('문의내역'),
+              InquiryHistoryPage(),
             ],
           ),
         ),

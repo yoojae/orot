@@ -5,14 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:orot/controller/mypage/alarm_list_controller.dart';
 import 'package:orot/controller/mypage/inquiry/inquiry_now_controller.dart';
 
-import 'package:orot/controller/register/welcome_to_new_controller.dart';
-import 'package:orot/global_asset/app_less_back.dart';
-import 'package:orot/global_asset/common.dart';
 import 'package:orot/global_asset/global_style.dart';
-import 'package:orot/global_asset/app_center_title.dart';
 
 
 class InquiryNowPage extends GetView<InquiryNowController> {
@@ -77,7 +72,7 @@ class InquiryNowPage extends GetView<InquiryNowController> {
               ),
               child: TextField(
                 // onChanged: (value) {
-                //   // controller.onNameChange(value);
+
                 // },
                 textAlignVertical: TextAlignVertical.top,
                 expands: true,
@@ -102,9 +97,6 @@ class InquiryNowPage extends GetView<InquiryNowController> {
                 ),
               ),
             ),
-
-
-
             Container(
               margin: EdgeInsets.only(top: 24.h),
               child: Column(
@@ -127,56 +119,9 @@ class InquiryNowPage extends GetView<InquiryNowController> {
                     fontFamily: 'Pretendard',
                   ),),
                   Upload(),
-                  // **------------------------- 이미지 업로드 ----------**
-                  // Container(
-                  //   margin: EdgeInsets.only(top: 8.h),
-                  //   height: 48.h,
-                  //   alignment: Alignment.center,
-                  //   decoration: BoxDecoration(
-                  //     color: GlobalStyle.orot_gray_lightest,
-                  //     borderRadius: BorderRadius.circular(25.r),
-                  //   ),
-                  //   child: Padding(
-                  //     padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  //     child: Row(
-                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //       children: [
-                  //         Flexible(
-                  //           flex: 1,
-                  //             child: Row(
-                  //               children: [
-                  //                 Text('+ ',
-                  //                   style: TextStyle(
-                  //                     color: Color(0xffadbdcc),
-                  //                     fontFamily: 'Pretendard',
-                  //                     fontWeight: FontWeight.w600,
-                  //                   ),
-                  //                 ),
-                  //                 Text('파일 첨부',
-                  //                   style: TextStyle(
-                  //                     color: GlobalStyle.orot_gray_dark,
-                  //                     fontFamily: 'Pretendard',
-                  //                     fontWeight: FontWeight.w600,
-                  //                   ),
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //         ),
-                  //         Flexible( // **---------- 아이콘 이미지로 변경 예정 ----------**
-                  //           flex: 1,
-                  //           child: Icon(Icons.now_wallpaper, size: 14.sp, color: GlobalStyle.orot_gray_dark,),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  // **------------------- 이미지 미리 보기 ------------------**
-
                 ],
               ),
             ),
-
-
             Info(
                 title: '운영시간',
                 subtitle: '평일 10:00 - 18:00',
@@ -187,9 +132,7 @@ class InquiryNowPage extends GetView<InquiryNowController> {
                 subtitle: '진행 중인 문의가 많을 경우 응답이 지연될 수 있습니다.',
                 endtitle: '최대한 빠르게 도움 드릴 수 있도록 노력하겠습니다.'
             ),
-
             Term(),
-
             GestureDetector(
               onTap: () {
 
@@ -431,48 +374,40 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-  XFile? image;
+  List<File> selectedImages = [];
+  final picker = ImagePicker();
 
-  final ImagePicker picker = ImagePicker();
+  Future getImages() async {
+    final pickedFile = await picker.pickMultiImage(
+        imageQuality: 100,
+        // maxHeight: 1000,
+        // maxWidth: 1000,
+    );
+    List<XFile> xfilePick = pickedFile;
 
-  Future getImage(ImageSource media) async {
-    var img = await picker.pickImage(source: media);
-
-    setState(() {
-      image = img;
-    });
+    setState(
+          () {
+        if (xfilePick.isNotEmpty) {
+          for (var i = 0; i < xfilePick.length; i++) {
+            selectedImages.add(File(xfilePick[i].path));
+          }
+        }
+      },
+    );
   }
-
-  // File? _pickedImage;
-  //
-  // Future<void> _pickImage() async {
-  //   final ImagePicker _picker = ImagePicker();
-  //   XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-  //   if (image != null) {
-  //     var selected = File(image.path);
-  //     setState(() {
-  //       _pickedImage = selected;
-  //     });
-  //   } else {
-  //     print('no image');
-  // }
-
-
-
-
-
 
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
           onTap: () {
-            getImage(ImageSource.gallery);
+            getImages();
           },
           child: Container(
-            margin: EdgeInsets.only(top: 8.h),
+            margin: EdgeInsets.only(top: 8.h, bottom: 12.h),
             height: 48.h,
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -507,7 +442,7 @@ class _UploadState extends State<Upload> {
                   ),
                   Flexible( // **---------- 아이콘 이미지로 변경 예정 ----------**
                     flex: 1,
-                    child: Icon(Icons.now_wallpaper, size: 14.sp, color: GlobalStyle.orot_gray_dark,),
+                    child: SvgPicture.asset('images/svg/attachment.svg'),
                   ),
                 ],
               ),
@@ -515,34 +450,54 @@ class _UploadState extends State<Upload> {
           ),
         ),
         // **--------------- 이미지 미리 보기 ------------------*
-        image != null
-         ? Container(
-              height: 64,
-              margin: EdgeInsets.only(
-                left: 28,
-                right: 28,
-              ),
-              decoration: BoxDecoration(
-                // color: Color(0xffc5bcf5),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Image.file(
-                File(image!.path),
-                fit: BoxFit.cover,
-              ),
-            )
-         : Container(
-              height: 64,
-              margin: EdgeInsets.only(
-                left: 28,
-                right: 28,
-              ),
-              decoration: BoxDecoration(
-                color: Color(0xffc5bcf5),
-                borderRadius: BorderRadius.circular(4),
-              ),
-          )
 
+        Container(
+          width: double.infinity,
+          height: selectedImages.isEmpty ? 0 : 64.h,
+          padding: EdgeInsets.only(left: 8.w),
+          child: selectedImages.isEmpty
+              ? Container(width: double.infinity, height: 0,)
+              : GridView.builder(
+                  itemCount: selectedImages.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      // mainAxisSpacing: 10,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(4.r),
+                          child: Image.file(
+                            selectedImages[index],
+                            fit: BoxFit.cover,
+                            width: 64.w,
+                            height: 64.h,
+                          ),
+                        ),
+                        Positioned(
+                          top: 4.h,
+                          left: 47.w,
+                          child: GestureDetector(
+                            onTap: () {
+
+                            },
+                            child: Container(
+                                width: 12.w,
+                                height: 12.h,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: GlobalStyle.orot_black
+                                ),
+                                child: Center(child: Icon(Icons.close, color: GlobalStyle.orot_white, size: 8.sp,))
+                            ),
+                          ),
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
       ],
     );
   }
@@ -597,6 +552,7 @@ class Term extends StatefulWidget {
 }
 
 class _TermState extends State<Term> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -607,10 +563,12 @@ class _TermState extends State<Term> {
             flex: 1,
             child: GestureDetector(
               onTap: () {
+                setState(() {
 
+                });
               },
               child: Container(
-                  child: Icon(Icons.check_rounded, color: GlobalStyle.orot_gray_light, size: 24.sp,)
+                  child: Icon(Icons.check_rounded, color: GlobalStyle.orot_primary_lighter, size: 24.sp,)
               ),
             ),
           ),
