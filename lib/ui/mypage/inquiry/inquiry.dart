@@ -27,29 +27,47 @@ class InquiryPage extends GetView<InquiryController> {
               size: 18.sp,
             ),
           ),
-          bottom: TabBar(
-            labelColor: GlobalStyle.orot_black,
-            unselectedLabelColor: GlobalStyle.orot_gray_light,
-            indicatorColor: GlobalStyle.orot_primary,
-            tabs: [
-              Tab(text: '문의하기'),
-              Tab(text: '문의 내역 확인'),
-            ],
-          ),
           centerTitle: true,
           title:
-          Text('1:1 문의하기', style: TextStyle(
-            color: GlobalStyle.orot_black,
-            fontSize: 18.sp,
-          ),),
+          Text('1:1 문의하기',
+            style: GlobalStyle.setTextStyle(
+                'h3', 'semi_bold', GlobalStyle.orot_black)
+          ),
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
+        body: SafeArea(
+          child: Column(
             children: [
-              InquiryNowPage(),
-              InquiryHistoryPage(),
+              TabBar(
+                labelColor: GlobalStyle.orot_black,
+                unselectedLabelColor: GlobalStyle.orot_gray_light,
+                indicatorColor: GlobalStyle.orot_primary,
+                labelStyle: TextStyle(
+                  fontSize: 16.sp,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w600,
+                ),
+                unselectedLabelStyle: TextStyle(
+                  fontSize: 16.sp,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w500,
+                ),
+                tabs: [
+                  Tab(text: '문의하기',),
+                  Tab(text: '문의 내역 확인'),
+                ],
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      InquiryNowPage(),
+                      InquiryHistoryPage(),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

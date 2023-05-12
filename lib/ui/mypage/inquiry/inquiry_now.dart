@@ -44,12 +44,8 @@ class InquiryNowPage extends GetView<InquiryNowController> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('내용', style: TextStyle(
-                    color: GlobalStyle.orot_black,
-                    fontSize: 16.sp,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w600,
-                  ),),
+                  Text('내용', style: GlobalStyle.setTextStyle(
+                      'h4', 'semi_bold', GlobalStyle.orot_black)),
                   Container(
                     margin: EdgeInsets.only(top: 5.h, left: 3.w),
                     width: 4.w,
@@ -77,23 +73,15 @@ class InquiryNowPage extends GetView<InquiryNowController> {
                 textAlignVertical: TextAlignVertical.top,
                 expands: true,
                 maxLines: null,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  color: GlobalStyle.orot_black,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w500,
-                ),
+                style: GlobalStyle.setTextStyle(
+                    'h4', 'medium', GlobalStyle.orot_black),
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),
                   counterText: '',
                   border: InputBorder.none,
                   hintText: '내용을 입력해주세요',
-                  hintStyle: TextStyle(
-                    color: GlobalStyle.orot_gray_dark,
-                    fontSize: 16.sp,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w500,
-                  ),
+                  hintStyle: GlobalStyle.setTextStyle(
+                      'h4', 'medium', GlobalStyle.orot_gray_dark),
                 ),
               ),
             ),
@@ -102,17 +90,15 @@ class InquiryNowPage extends GetView<InquiryNowController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('첨부파일', style: TextStyle(
-                    fontSize: 16.sp,
-                    color: GlobalStyle.orot_black,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w600,
-                  ),),
+                  Text('첨부파일', style: GlobalStyle.setTextStyle(
+                      'h4', 'semi_bold', GlobalStyle.orot_black),),
+                  Container(height: 8.h,),
                   Text('이미지 파일(GIF, PNG, JPG)을 기준으로 최대 00MB이하,', style: TextStyle(
                     fontSize: 12.sp,
                     color: GlobalStyle.orot_gray_darkest,
                     fontFamily: 'Pretendard',
                   ),),
+                  Container(height: 8.h,),
                   Text('최대 3개까지 등록 가능합니다.', style: TextStyle(
                     fontSize: 12.sp,
                     color: GlobalStyle.orot_gray_darkest,
@@ -127,6 +113,7 @@ class InquiryNowPage extends GetView<InquiryNowController> {
                 subtitle: '평일 10:00 - 18:00',
                 endtitle: '점심시간 12:00 - 13:00 / 토,일,공휴일 휴무'
             ),
+            Container(height: 32.h,),
             Info(
                 title: '상담 이용방법',
                 subtitle: '진행 중인 문의가 많을 경우 응답이 지연될 수 있습니다.',
@@ -142,16 +129,12 @@ class InquiryNowPage extends GetView<InquiryNowController> {
                 width: double.infinity,
                 height: 48.h,
                 decoration: BoxDecoration(
-                  color: GlobalStyle.orot_gray_dark,
+                  color: GlobalStyle.orot_gray_lighter,
                   borderRadius: BorderRadius.circular(25.r),
                 ),
                 child: Center(child: Text('문의',
-                  style: TextStyle(
-                    color: GlobalStyle.orot_white,
-                    fontSize: 16,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: GlobalStyle.setTextStyle(
+                      'h4', 'bold', GlobalStyle.orot_white),
                 ),),
               ),
             ),
@@ -181,12 +164,8 @@ class InputForm extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(txt,
-                style: TextStyle(
-                  color: GlobalStyle.orot_black,
-                  fontSize: 16.sp,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                ),
+                style: GlobalStyle.setTextStyle(
+                    'h4', 'semi_bold', GlobalStyle.orot_black),
               ),
               Container(
                 margin: EdgeInsets.only(top: 5.h, left: 3.w),
@@ -210,29 +189,19 @@ class InputForm extends StatelessWidget {
           ),
           child: TextField(
             // onChanged: (value) {
-            //   // controller.onNameChange(value);
+
             // },
             textAlign: TextAlign.left,
             maxLength: 10,
-            style: TextStyle(
-              color: GlobalStyle.orot_black,
-              fontSize: 16.sp,
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w500,
-            ),
-            // GlobalStyle.setTextStyle(
-            //     'h6', 'regular', GlobalStyle.orot_black),
+            style: GlobalStyle.setTextStyle(
+                'h4', 'medium', GlobalStyle.orot_black),
             decoration: InputDecoration(
               contentPadding: EdgeInsets.only(left: 24.w),
               counterText: '',
               border: InputBorder.none,
               hintText: hint,
-              hintStyle: TextStyle(
-                color: GlobalStyle.orot_gray_dark,
-                fontSize: 16.sp,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w500,
-              ),
+              hintStyle: GlobalStyle.setTextStyle(
+                  'h4', 'medium', GlobalStyle.orot_gray_dark),
             ),
           ),
         ),
@@ -272,12 +241,8 @@ class _CategoryFormState extends State<CategoryForm> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('카테고리', style: TextStyle(
-                color: GlobalStyle.orot_black,
-                fontSize: 16.sp,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w600,
-              ),),
+              Text('카테고리', style: GlobalStyle.setTextStyle(
+                  'h4', 'semi_bold', GlobalStyle.orot_black),),
               Container(
                 margin: EdgeInsets.only(top: 5.h, left: 3.w),
                 width: 4.w,
@@ -301,12 +266,8 @@ class _CategoryFormState extends State<CategoryForm> {
           child: DropdownButton(
             hint: Padding(
               padding: EdgeInsets.only(left: 24.w),
-              child: Text('선택 안 함', style: TextStyle(
-                color: GlobalStyle.orot_gray_dark,
-                fontSize: 16.sp,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w500,
-              ),),
+              child: Text('선택 안 함', style: GlobalStyle.setTextStyle(
+                  'h4', 'medium', GlobalStyle.orot_gray_dark),),
             ),
             value: dropdownvalue,
             icon: Padding(
@@ -332,12 +293,8 @@ class _CategoryFormState extends State<CategoryForm> {
                 value: items,
                 child: Padding(
                   padding: EdgeInsets.only(left: 24.w),
-                  child: Text(items, style: TextStyle(
-                      color: GlobalStyle.orot_gray_dark,
-                      fontSize: 16.sp,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                  ),),
+                  child: Text(items, style: GlobalStyle.setTextStyle(
+                      'h4', 'medium', GlobalStyle.orot_gray_dark),),
                 ),
               );
             }).toList(),
@@ -348,15 +305,11 @@ class _CategoryFormState extends State<CategoryForm> {
             },
             isExpanded: true,
             underline: Container(),
-            style: TextStyle(
-                fontSize: 16.sp,
-                color: GlobalStyle.orot_black,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w500,
-            ),
+            style: GlobalStyle.setTextStyle(
+                    'h4', 'medium', GlobalStyle.orot_black),
             dropdownColor: GlobalStyle.orot_gray_lightest,
             iconEnabledColor: GlobalStyle.orot_gray_dark,
-            iconDisabledColor: GlobalStyle.orot_gray_dark,
+            iconDisabledColor: GlobalStyle.orot_black,
           ),
         ),
       ],
@@ -380,20 +333,16 @@ class _UploadState extends State<Upload> {
   Future getImages() async {
     final pickedFile = await picker.pickMultiImage(
         imageQuality: 100,
-        // maxHeight: 1000,
-        // maxWidth: 1000,
     );
     List<XFile> xfilePick = pickedFile;
 
-    setState(
-          () {
-        if (xfilePick.isNotEmpty) {
-          for (var i = 0; i < xfilePick.length; i++) {
-            selectedImages.add(File(xfilePick[i].path));
-          }
+    setState(() {
+      if (xfilePick.isNotEmpty) {
+        for (var i = 0; i < xfilePick.length; i++) {
+          selectedImages.add(File(xfilePick[i].path));
         }
-      },
-    );
+      }
+    });
   }
 
 
@@ -407,7 +356,7 @@ class _UploadState extends State<Upload> {
             getImages();
           },
           child: Container(
-            margin: EdgeInsets.only(top: 8.h, bottom: 12.h),
+            margin: EdgeInsets.only(top: 8.h, bottom: selectedImages.isEmpty ? 10.h : 12.h),
             height: 48.h,
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -424,23 +373,17 @@ class _UploadState extends State<Upload> {
                     child: Row(
                       children: [
                         Text('+ ',
-                          style: TextStyle(
-                            color: Color(0xffadbdcc),
-                            fontFamily: 'Pretendard',
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: GlobalStyle.setTextStyle(
+                              'h6', 'semi_bold', GlobalStyle.orot_gray_dark)
                         ),
                         Text('파일 첨부',
-                          style: TextStyle(
-                            color: GlobalStyle.orot_gray_dark,
-                            fontFamily: 'Pretendard',
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: GlobalStyle.setTextStyle(
+                              'h6', 'semi_bold', GlobalStyle.orot_gray_dark)
                         ),
                       ],
                     ),
                   ),
-                  Flexible( // **---------- 아이콘 이미지로 변경 예정 ----------**
+                  Flexible( // **---------- 아이콘 SVG ----------**
                     flex: 1,
                     child: SvgPicture.asset('images/svg/attachment.svg'),
                   ),
@@ -450,7 +393,6 @@ class _UploadState extends State<Upload> {
           ),
         ),
         // **--------------- 이미지 미리 보기 ------------------*
-
         Container(
           width: double.infinity,
           height: selectedImages.isEmpty ? 0 : 64.h,
@@ -458,9 +400,11 @@ class _UploadState extends State<Upload> {
           child: selectedImages.isEmpty
               ? Container(width: double.infinity, height: 0,)
               : GridView.builder(
+                  padding: EdgeInsets.zero,
                   itemCount: selectedImages.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
+                      // crossAxisSpacing: 0,
                       // mainAxisSpacing: 10,
                   ),
                   itemBuilder: (BuildContext context, int index) {
@@ -498,16 +442,43 @@ class _UploadState extends State<Upload> {
                   },
                 ),
               ),
+        Container(
+          margin: EdgeInsets.only(top: selectedImages.isEmpty ? 0 : 8.h, bottom: 8.h),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: '0MB',
+                    style: TextStyle(
+                      color: GlobalStyle.orot_primary,
+                      fontSize: 12.sp,
+                      fontFamily: 'Pretendard',
+                    ),
+                  ),
+                  TextSpan(
+                    text: ' / 00MB',
+                    style: TextStyle(
+                      color: GlobalStyle.orot_gray_darkest,
+                      fontSize: 12.sp,
+                      fontFamily: 'Pretendard',
+                    ),
+                  ),
+                ],
+              ),
+              // style: TextStyle(
+              //   color: Color(0xff7a65e8),
+              //   fontSize: 12,
+              //   fontFamily: 'Pretendard',
+              // ),
+            ),
+          ),
+        ),
       ],
     );
   }
 }
-
-
-
-
-
-
 
 
 
@@ -523,17 +494,14 @@ class Info extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(height: 24.h,),
-        Text(title, style: TextStyle(
-          fontSize: 16.sp,
-          color: GlobalStyle.orot_black,
-          fontFamily: 'Pretendard',
-          fontWeight: FontWeight.w600,
-        ),),
+        Text(title, style: GlobalStyle.setTextStyle(
+            'h4', 'semi_bold', GlobalStyle.orot_black)),
+        Container(height: 8.h,),
         Text(subtitle, style: TextStyle(
             fontFamily: 'Pretendard',
             color: GlobalStyle.orot_gray_darkest
         ),),
+        Container(height: 8.h,),
         Text(endtitle, style: TextStyle(
             fontFamily: 'Pretendard',
             color: GlobalStyle.orot_gray_darkest
@@ -544,14 +512,8 @@ class Info extends StatelessWidget {
 }
 
 
-class Term extends StatefulWidget {
+class Term extends StatelessWidget {
   const Term({Key? key}) : super(key: key);
-
-  @override
-  State<Term> createState() => _TermState();
-}
-
-class _TermState extends State<Term> {
 
   @override
   Widget build(BuildContext context) {
@@ -563,9 +525,7 @@ class _TermState extends State<Term> {
             flex: 1,
             child: GestureDetector(
               onTap: () {
-                setState(() {
 
-                });
               },
               child: Container(
                   child: Icon(Icons.check_rounded, color: GlobalStyle.orot_primary_lighter, size: 24.sp,)
